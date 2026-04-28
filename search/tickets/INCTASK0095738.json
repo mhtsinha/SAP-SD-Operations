@@ -1,0 +1,30 @@
+{
+ "task_id": "INCTASK0095738",
+ "title": "Good in transit misalignment (trading model US10-US50-US98)  - Reference to incident INC5113018",
+ "description": "Good in transit misalignment (trading model US10-US50-US98)  - Reference to incident INC5113018",
+ "module": "SD",
+ "tcode": ["VF01, VF02, SE38"],
+ "program": ["RSNAST00", "RV60B636", "ZVSAI_RV60AFZZ_PRC_DET_IC"],
+ "symptom": "I/C or Intercompany Invoice and corresponding accounting document showing goods receipt amount instead of invoice amount",
+ "error_message": "",
+ "business_context": "User tries to create I/C invoice from the standard invoice by triggering ZZIV output type",
+ "root_cause": "Copy control routines 636 and 036 considering TVCPF table entry instead of invoice/goods receipt quantity which is what standard SAP code uses.",
+ "debug_path": [
+   "VF02",
+   "RV60B636",
+   "ZVSAI_RV60AFZZ_PRC_DET_IC"
+ ],
+ "fix": "Added logic to determine invoice amount on the basis of invoice/goods receipt quantity in routine 636 and custom program ZVSAI_RV60AFZZ_PRC_DET_IC since routine 036 is a standard program",
+ "keywords": [
+   "invoice",
+   "billing",
+   "copy control",
+   "routine 036",
+   "routine 636",
+   "intercompany",
+   "standard",
+   "I/C",
+   "goods receipt"
+ ],
+ "created_at": "2026-04-28"
+}
